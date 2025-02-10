@@ -5,9 +5,9 @@ Project 5 integrates Python and SQL, focusing on database interactions using SQL
 
 **Cloned and Opened my Github project**
    cd \Projects
-git clone https://github.com/dennykami1/datafun-05-sql
-cd datafun-04-eda-
-code .
+   git clone https://github.com/dennykami1/datafun-05-sql
+   cd datafun-04-eda-
+   code .
 
 **Created a .gitignore file, and pasted in contents from example**
 #Python virtual environment

@@ -44,9 +44,3 @@ py -m venv .venv
 py -m pip install --upgrade pip setuptools wheel
 py -m pip install -r requirements.txt
 ```
-
-**Created Jupyter Notebook and Selected Kernel**
-```
-added new file with extension .ipynb
-Opened and selected Notebook Kernel .venv
-```

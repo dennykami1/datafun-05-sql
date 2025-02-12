@@ -26,9 +26,6 @@ def create_database():
             conn.executescript(sql_script)
             print("Tables created successfully.")
 
-    conn.close()
-    print("Database created successfully.")
-
 def insert_data_from_csv():
     """Function to use pandas to read data from CSV files (in 'data' folder)
     and insert the records into their respective tables."""

@@ -3,14 +3,16 @@
 -- create the authors table
 CREATE TABLE authors (
     author_id TEXT PRIMARY KEY,
-    first TEXT NOT NULL,
-    last TEXT NOT NULL
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    year_born INTEGER
 );
 
 -- create the books table
 CREATE TABLE books (
     book_id TEXT PRIMARY KEY,
-    title TEXT NOT NULL,
+    Title TEXT,
+    year_published INTEGER NOT NULL,
     genre TEXT NOT NULL,
     goodreads_rating REAL NOT NULL,
     author_id TEXT NOT NULL,

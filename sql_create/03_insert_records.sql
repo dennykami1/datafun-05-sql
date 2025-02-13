@@ -9,7 +9,7 @@ VALUES
     ('e5f6g7h8-9012-34ef-5678-9012345678gh','Emily','Henry', NULL);
 
 -- Insert books data
-INSERT INTO books (book_id, Title, year_published, genre, goodreads_rating, author_id)
+INSERT INTO books (book_id, title, year_published, genre, goodreads_rating, author_id)
 VALUES
     ('1a2b3c4d-5678-90ab-cdef-1234567890ab', 'Magic Lessons', 2020, 'Historical Fiction', 4.22, 'a1b2c3d4-5678-90ab-cdef-1234567890ab'),
     ('2b3c4d5e-6789-01bc-def2-3456789012cd', 'Throne of Glass', 2012, 'Fantasy', 4.18, 'b2c3d4e5-6789-01bc-def2-3456789012cd'),

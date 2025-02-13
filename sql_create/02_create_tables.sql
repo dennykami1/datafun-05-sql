@@ -11,7 +11,7 @@ CREATE TABLE authors (
 -- create the books table
 CREATE TABLE books (
     book_id TEXT PRIMARY KEY,
-    Title TEXT,
+    title TEXT NOT NULL,
     year_published INTEGER NOT NULL,
     genre TEXT NOT NULL,
     goodreads_rating REAL NOT NULL,

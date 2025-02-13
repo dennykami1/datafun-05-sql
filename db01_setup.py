@@ -43,11 +43,31 @@ def insert_data_from_csv():
     except (sqlite3.Error, pd.errors.EmptyDataError, FileNotFoundError) as e:
         print("Error inserting data:", e)
 
+def insert_records():
+    """Function to insert records into the database"""
+
+    # Define the path to the SQL file
+    sql_file = pathlib.Path("sql_create", "03_Insert_Records.sql")
+
+    # Connect to the SQLite database and execute the SQL script
+    with sqlite3.connect(db_file) as conn:
+        cursor = conn.cursor()
+        
+        # Read the SQL script file
+        with open(sql_file, "r", encoding="utf-8") as file:
+            sql_script = file.read()
+        
+        # Execute the SQL script
+        cursor.executescript(sql_script)
+
+    print("Records inserted successfully.")
+
 print("Database created successfully.")
 
 def main():
     create_database()
     insert_data_from_csv()
+    insert_records()
 
 if __name__ == "__main__":
     main()

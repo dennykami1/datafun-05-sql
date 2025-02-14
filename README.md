@@ -49,59 +49,59 @@ py -m pip install -r requirements.txt
 
 # **Summary of Project**
 
-## **db01_setup.py**
+# **db01_setup.py**
 
-### This Python script automates the creation of an SQLite database, defines its schema, and inserts records from CSV files and SQL scripts.
+## This Python script automates the creation of a SQLite database, defines its schema, and inserts records from CSV files and SQL scripts.
 
-### **Features:**
-#### Drops existing tables to ensure a fresh start.
-#### Creates tables using SQL schema files.
-#### Inserts data from CSV files and an SQL script.
-#### Uses Pandas for CSV data handling and SQLite for database management.
-#### Includes logging for tracking execution.
+## **Features:**
+#### - Drops existing tables to ensure a fresh start.
+#### - Creates tables using SQL schema files.
+#### - Inserts data from CSV files and an SQL script.
+#### - Uses Pandas for CSV data handling and SQLite for database management.
+#### - Includes logging for tracking execution.
 
-### **Placed SQL schema files in the sql_create folder:**
-#### 01_drop_tables.sql - drop tables to restart
-#### 02_create_tables.sql - create authors and books database schema using sql
-#### 03_insert_records.sql - insert records
+## **Placed SQL schema files in the sql_create folder:**
+#### 1. 01_drop_tables.sql - drop tables to restart
+#### 2. 02_create_tables.sql - create authors and books database schema using sql
+#### 3. 03_insert_records.sql - insert records
 
-![alt text](table_after_db01_setup.png)
-
----
-
-## **db02_setup.py**
-
-### This Python script runs SQL scripts to interact with database fields, update records, delete records, and potentially modify the schema.
-
-### **Features:**
-#### Deletes records using a predefined SQL script.
-#### Updates records based on specified conditions.
-#### Uses SQLite for database management and logging for execution tracking.
-
-#### **Store SQL scripts in the sql_features folder:**
-#### delete_records.sql - Handles record deletion
-#### update_records.sql - Updates existing records
-
-![alt text](table_after_db02.png)
+![Table after running db01_setup.py](Clips/table_after_db01_setup.png)
 
 ---
 
-## **db03_queries.py**
+# **db02_setup.py**
 
-### This Python script executes SQL queries to analyze and manipulate data stored in an SQLite database. It runs various SQL operations and logs the results for further insights.
+## This Python script runs SQL scripts to interact with database fields, update records, delete records, and potentially modify the schema.
 
-### **Features:**
-#### Aggregation Queries: Summarizes data using SQL aggregate functions.
-#### Filtering Queries: Extracts specific data based on conditions.
-#### Grouping Queries: Groups data for better analysis.
-#### Sorting Queries: Orders query results for improved readability.
-#### Join Queries: Combines data from multiple tables.
+## **Features:**
+#### - Deletes records using a predefined SQL script.
+#### - Updates records based on specified conditions.
+#### - Uses SQLite for database management and logging for execution tracking.
 
-### **Store SQL scripts in the sql_queries folder:**
-#### query_aggregation.sql - Aggregates data
-#### query_filter.sql - Filters data
-#### query_group_by.sql - Groups results
-#### query_sorting.sql - Sorts query output
-#### query_join.sql - Joins tables
+## **Store SQL scripts in the sql_features folder:**
+#### 1. delete_records.sql - Handles record deletion
+#### 2. update_records.sql - Updates existing records
 
-![alt text](log_after_db03.png)
+![Table after running db02_setup.py](Clips/table_after_db02.png)
+
+---
+
+# **db03_queries.py**
+
+## This Python script executes SQL queries to analyze and manipulate data stored in an SQLite database. It runs various SQL operations and logs the results for further insights.
+
+## **Features:**
+#### - Aggregation Queries: Summarizes data using SQL aggregate functions.
+#### - Filtering Queries: Extracts specific data based on conditions.
+#### - Grouping Queries: Groups data for better analysis.
+#### - Sorting Queries: Orders query results for improved readability.
+#### - Join Queries: Combines data from multiple tables.
+
+## **Store SQL scripts in the sql_queries folder:**
+#### 1. query_aggregation.sql - Aggregates data
+#### 2. query_filter.sql - Filters data
+#### 3. query_group_by.sql - Groups results
+#### 4. query_sorting.sql - Sorts query output
+#### 5. query_join.sql - Joins tables
+
+![Log after db03](Clips/log_after_db03.png)

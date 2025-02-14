@@ -4,6 +4,9 @@ import sqlite3
 import pathlib
 import pandas as pd
 
+# Import local modules
+from utils_logger import logger
+
 # Define the database file path
 db_file = pathlib.Path("project.sqlite3")
 
@@ -24,7 +27,7 @@ def delete_records():
         # Execute the SQL script
         cursor.executescript(sql_script)
 
-    print("Records deleted successfully.")
+    logger.info("Records deleted successfully.")
 
 def update_records():
     """Function to update records in the database"""
@@ -43,14 +46,11 @@ def update_records():
         # Execute the SQL script
         cursor.executescript(sql_script)
 
-    print("Records updated successfully.")
+    logger.info("Records updated successfully.")
 
 def main():
     delete_records()
     update_records()
-    
 
 if __name__ == "__main__":
     main()
-
-#TO DO: go look at old utils example from project 3 on how to use the logger. Come back and replace print statements with logger statements. 

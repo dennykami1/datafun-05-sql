@@ -4,6 +4,9 @@ import sqlite3
 import pandas as pd
 import pathlib
 
+# Import local modules
+from utils_logger import logger
+
 # Define the database file in the current root project directory
 db_file = pathlib.Path("project.sqlite3")
 
@@ -16,7 +19,7 @@ def create_database():
             with open(sql_file, "r") as file:
                 sql_script = file.read()
             conn.executescript(sql_script)
-            print("Tables dropped successfully.")
+            logger.info("Tables dropped successfully.")
     
     # Create the Tables
     with sqlite3.connect(db_file) as conn:
@@ -24,7 +27,7 @@ def create_database():
             with open(sql_file, "r") as file:
                 sql_script = file.read()
             conn.executescript(sql_script)
-            print("Tables created successfully.")
+            logger.info("Tables created successfully.")
 
 def insert_data_from_csv():
     """Function to use pandas to read data from CSV files (in 'data' folder)
@@ -39,9 +42,9 @@ def insert_data_from_csv():
             # pass in the table name and the connection
             authors_df.to_sql("authors", conn, if_exists="replace", index=False)
             books_df.to_sql("books", conn, if_exists="replace", index=False)
-            print("Data inserted successfully.")
+            logger.info("Data inserted successfully.")
     except (sqlite3.Error, pd.errors.EmptyDataError, FileNotFoundError) as e:
-        print("Error inserting data:", e)
+        logger.error("Error inserting data:", e)
 
 def insert_records():
     """Function to insert records into the database"""
@@ -60,9 +63,9 @@ def insert_records():
         # Execute the SQL script
         cursor.executescript(sql_script)
 
-    print("Records inserted successfully.")
+    logger.info("Records inserted successfully.")
 
-print("Database created successfully.")
+logger.info("Database created successfully.")
 
 def main():
     create_database()
@@ -71,5 +74,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#TO DO: go look at old utils example from project 3 on how to use the logger. Come back and replace print statements with logger statements. 

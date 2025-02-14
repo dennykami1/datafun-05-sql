@@ -123,3 +123,129 @@ INNER JOIN books ON authors.author_id = books.author_id
 2025-02-13 21:41:20.472 | INFO     | __main__:query_join:163 - ('Yarros', 'Fourth Wing', 2023, 4.58, 'Fantasy')
 2025-02-13 21:41:20.472 | INFO     | __main__:query_join:163 - ('Henry', 'Happy Place', 2023, 3.97, 'Womens Fiction')
 2025-02-13 21:41:20.472 | INFO     | __main__:query_join:165 - Join query executed successfully.
+2025-02-13 22:28:35.211 | INFO     | utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-02-13 22:28:35.212 | INFO     | __main__:<module>:68 - Database created successfully.
+2025-02-13 22:28:35.229 | INFO     | __main__:create_database:22 - Tables dropped successfully.
+2025-02-13 22:28:35.253 | INFO     | __main__:create_database:30 - Tables created successfully.
+2025-02-13 22:28:35.343 | INFO     | __main__:insert_data_from_csv:45 - Data inserted successfully.
+2025-02-13 22:28:35.358 | INFO     | __main__:insert_records:66 - Records inserted successfully.
+2025-02-13 22:40:44.981 | INFO     | utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-02-13 22:40:45.025 | INFO     | __main__:delete_records:30 - Records deleted successfully.
+2025-02-13 22:40:45.086 | INFO     | __main__:update_records:49 - Records updated successfully.
+2025-02-13 22:49:48.152 | INFO     | utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-02-13 22:49:48.155 | INFO     | __main__:query_aggregation:36 - Query: -- use aggregation functions including COUNT, AVG, SUM.
+
+-- count all rows
+SELECT COUNT(*) FROM books
+2025-02-13 22:49:48.155 | INFO     | __main__:query_aggregation:37 - Result:
+2025-02-13 22:49:48.156 | INFO     | __main__:query_aggregation:39 - (11,)
+2025-02-13 22:49:48.158 | INFO     | __main__:query_aggregation:36 - Query: -- count unique genres
+SELECT COUNT(DISTINCT genre) FROM books
+2025-02-13 22:49:48.159 | INFO     | __main__:query_aggregation:37 - Result:
+2025-02-13 22:49:48.160 | INFO     | __main__:query_aggregation:39 - (8,)
+2025-02-13 22:49:48.161 | INFO     | __main__:query_aggregation:36 - Query: -- get average amount
+SELECT AVG(goodreads_rating) FROM books
+2025-02-13 22:49:48.163 | INFO     | __main__:query_aggregation:37 - Result:
+2025-02-13 22:49:48.167 | INFO     | __main__:query_aggregation:39 - (4.1854545454545455,)
+2025-02-13 22:49:48.168 | INFO     | __main__:query_aggregation:36 - Query: -- combine functions
+SELECT SUM(goodreads_rating), AVG(goodreads_rating), COUNT(*) FROM books
+2025-02-13 22:49:48.169 | INFO     | __main__:query_aggregation:37 - Result:
+2025-02-13 22:49:48.169 | INFO     | __main__:query_aggregation:39 - (46.04, 4.1854545454545455, 11)
+2025-02-13 22:49:48.169 | INFO     | __main__:query_aggregation:41 - Aggregation query executed successfully.
+2025-02-13 22:49:48.171 | INFO     | __main__:query_filter:67 - Query: -- use WHERE to filter data based on conditions.
+
+-- get all books with a rating above 4.5
+SELECT * FROM books WHERE goodreads_rating > 4.5
+2025-02-13 22:49:48.172 | INFO     | __main__:query_filter:68 - Result:
+2025-02-13 22:49:48.173 | INFO     | __main__:query_filter:70 - ('3c4d5e6f-7890-12cd-ef34-5678901234de', 'Fourth Wing', 2023, 'Fantasy', 4.58, 'c3d4e5f6-7890-12cd-ef34-5678901234de')
+2025-02-13 22:49:48.175 | INFO     | __main__:query_filter:67 - Query: -- get all books with a rating above 4.5 and published after 2000
+SELECT * FROM books WHERE goodreads_rating > 4.5 AND year_published > 2000
+2025-02-13 22:49:48.175 | INFO     | __main__:query_filter:68 - Result:
+2025-02-13 22:49:48.176 | INFO     | __main__:query_filter:70 - ('3c4d5e6f-7890-12cd-ef34-5678901234de', 'Fourth Wing', 2023, 'Fantasy', 4.58, 'c3d4e5f6-7890-12cd-ef34-5678901234de')
+2025-02-13 22:49:48.176 | INFO     | __main__:query_filter:67 - Query: -- select fantasy books with a rating greater than 4.5
+SELECT * FROM books WHERE genre = 'Fantasy' OR goodreads_rating > 4.5
+2025-02-13 22:49:48.177 | INFO     | __main__:query_filter:68 - Result:
+2025-02-13 22:49:48.177 | INFO     | __main__:query_filter:70 - ('ca8e64c3-1e67-47f5-82cc-3e4e30f63b75', "Harry Potter and the Philosopher's Stone", 1997, 'Fantasy', 4.47, '6b693b96-394a-4a1d-a4e2-792a47d7a568')
+2025-02-13 22:49:48.178 | INFO     | __main__:query_filter:70 - ('2b3c4d5e-6789-01bc-def2-3456789012cd', 'Throne of Glass', 2012, 'Fantasy', 4.18, 'b2c3d4e5-6789-01bc-def2-3456789012cd')
+2025-02-13 22:49:48.180 | INFO     | __main__:query_filter:70 - ('3c4d5e6f-7890-12cd-ef34-5678901234de', 'Fourth Wing', 2023, 'Fantasy', 4.58, 'c3d4e5f6-7890-12cd-ef34-5678901234de')
+2025-02-13 22:49:48.181 | INFO     | __main__:query_filter:72 - Filtering query executed successfully.
+2025-02-13 22:49:48.184 | INFO     | __main__:query_group_by_sql:97 - Query: -- use GROUP BY clause (and optionally with aggregation)
+
+-- Get the average goodreads_rating by genre
+SELECT genre, AVG(goodreads_rating)
+FROM books
+GROUP BY genre
+2025-02-13 22:49:48.185 | INFO     | __main__:query_group_by_sql:98 - Result:
+2025-02-13 22:49:48.186 | INFO     | __main__:query_group_by_sql:100 - ('Classics', 3.93)
+2025-02-13 22:49:48.187 | INFO     | __main__:query_group_by_sql:100 - ('Dystopian', 4.19)
+2025-02-13 22:49:48.188 | INFO     | __main__:query_group_by_sql:100 - ('Fantasy', 4.41)
+2025-02-13 22:49:48.188 | INFO     | __main__:query_group_by_sql:100 - ('Fiction', 4.26)
+2025-02-13 22:49:48.189 | INFO     | __main__:query_group_by_sql:100 - ('Historical Fiction', 4.22)
+2025-02-13 22:49:48.189 | INFO     | __main__:query_group_by_sql:100 - ('Romance', 4.29)
+2025-02-13 22:49:48.190 | INFO     | __main__:query_group_by_sql:100 - ('Science Fiction', 3.975)
+2025-02-13 22:49:48.190 | INFO     | __main__:query_group_by_sql:100 - ('Womens Fiction', 3.97)
+2025-02-13 22:49:48.191 | INFO     | __main__:query_group_by_sql:97 - Query: -- Get the count of books by genre
+SELECT genre, COUNT(*) as count
+FROM books
+GROUP BY genre
+2025-02-13 22:49:48.191 | INFO     | __main__:query_group_by_sql:98 - Result:
+2025-02-13 22:49:48.192 | INFO     | __main__:query_group_by_sql:100 - ('Classics', 1)
+2025-02-13 22:49:48.192 | INFO     | __main__:query_group_by_sql:100 - ('Dystopian', 1)
+2025-02-13 22:49:48.193 | INFO     | __main__:query_group_by_sql:100 - ('Fantasy', 3)
+2025-02-13 22:49:48.193 | INFO     | __main__:query_group_by_sql:100 - ('Fiction', 1)
+2025-02-13 22:49:48.194 | INFO     | __main__:query_group_by_sql:100 - ('Historical Fiction', 1)
+2025-02-13 22:49:48.194 | INFO     | __main__:query_group_by_sql:100 - ('Romance', 1)
+2025-02-13 22:49:48.194 | INFO     | __main__:query_group_by_sql:100 - ('Science Fiction', 2)
+2025-02-13 22:49:48.195 | INFO     | __main__:query_group_by_sql:100 - ('Womens Fiction', 1)
+2025-02-13 22:49:48.196 | INFO     | __main__:query_group_by_sql:102 - Grouping query executed successfully.
+2025-02-13 22:49:48.199 | INFO     | __main__:query_sorting:128 - Query: -- use ORDER BY to sort data.
+
+-- sort by goodreads_rating in descending order
+SELECT * FROM books ORDER BY goodreads_rating DESC
+2025-02-13 22:49:48.200 | INFO     | __main__:query_sorting:129 - Result:
+2025-02-13 22:49:48.202 | INFO     | __main__:query_sorting:131 - ('3c4d5e6f-7890-12cd-ef34-5678901234de', 'Fourth Wing', 2023, 'Fantasy', 4.58, 'c3d4e5f6-7890-12cd-ef34-5678901234de')
+2025-02-13 22:49:48.203 | INFO     | __main__:query_sorting:131 - ('ca8e64c3-1e67-47f5-82cc-3e4e30f63b75', "Harry Potter and the Philosopher's Stone", 1997, 'Fantasy', 4.47, '6b693b96-394a-4a1d-a4e2-792a47d7a568')
+2025-02-13 22:49:48.204 | INFO     | __main__:query_sorting:131 - ('c6e67918-e509-4a6b-bc3a-979f6ad802f0', 'Pride and Prejudice', 1813, 'Romance', 4.29, '4dca0632-2c53-490c-99d5-4f6d41e56c0e')
+2025-02-13 22:49:48.205 | INFO     | __main__:query_sorting:131 - ('d6f83870-ff21-4a5d-90ab-26a49ab6ed12', 'To Kill a Mockingbird', 1960, 'Fiction', 4.26, '10f88232-1ae7-4d88-a6a2-dfcebb22a596')
+2025-02-13 22:49:48.205 | INFO     | __main__:query_sorting:131 - ('1a2b3c4d-5678-90ab-cdef-1234567890ab', 'Magic Lessons', 2020, 'Historical Fiction', 4.22, 'a1b2c3d4-5678-90ab-cdef-1234567890ab')
+2025-02-13 22:49:48.213 | INFO     | __main__:query_sorting:131 - ('0f5f44f7-44d8-4f49-b8c4-c64d847587d3', '1984', 1949, 'Dystopian', 4.19, 'c3a47e85-2a6b-4196-a7a8-8b55d8fc1f70')
+2025-02-13 22:49:48.214 | INFO     | __main__:query_sorting:131 - ('2b3c4d5e-6789-01bc-def2-3456789012cd', 'Throne of Glass', 2012, 'Fantasy', 4.18, 'b2c3d4e5-6789-01bc-def2-3456789012cd')
+2025-02-13 22:49:48.215 | INFO     | __main__:query_sorting:131 - ('38e530f1-228f-4d6e-a587-2ed4d6c44e9c', 'Brave New World', 1932, 'Science Fiction', 3.99, '7b144e32-7ff4-4b58-8eb0-e63d3c9f9b8d')
+2025-02-13 22:49:48.216 | INFO     | __main__:query_sorting:131 - ('5e6f7g8h-9012-34ef-5678-9012345678gh', 'Happy Place', 2023, 'Womens Fiction', 3.97, 'e5f6g7h8-9012-34ef-5678-9012345678gh')
+2025-02-13 22:49:48.217 | INFO     | __main__:query_sorting:131 - ('3a1d835c-1e15-4a48-8e8c-b12239604e98', 'Fahrenheit 451', 1953, 'Science Fiction', 3.96, '0cc3c8e4-e0c0-482f-b2f7-af87330de214')
+2025-02-13 22:49:48.219 | INFO     | __main__:query_sorting:131 - ('f9d9e7de-c44d-4d1d-b3ab-59343bf32bc2', 'The Great Gatsby', 1925, 'Classics', 3.93, 'e0b75863-866d-4db4-85c7-df9bb8ee6dab')
+2025-02-13 22:49:48.221 | INFO     | __main__:query_sorting:128 - Query: -- sort by year_born in ascending order
+SELECT * FROM authors ORDER BY year_born ASC
+2025-02-13 22:49:48.222 | INFO     | __main__:query_sorting:129 - Result:
+2025-02-13 22:49:48.223 | INFO     | __main__:query_sorting:131 - ('4dca0632-2c53-490c-99d5-4f6d41e56c0e', 'Jane', 'Austen', 1775)
+2025-02-13 22:49:48.224 | INFO     | __main__:query_sorting:131 - ('7b144e32-7ff4-4b58-8eb0-e63d3c9f9b8d', 'Aldous', 'Huxley', 1894)
+2025-02-13 22:49:48.224 | INFO     | __main__:query_sorting:131 - ('e0b75863-866d-4db4-85c7-df9bb8ee6dab', 'F. Scott', 'Fitzgerald', 1896)
+2025-02-13 22:49:48.225 | INFO     | __main__:query_sorting:131 - ('c3a47e85-2a6b-4196-a7a8-8b55d8fc1f70', 'George', 'Orwell', 1903)
+2025-02-13 22:49:48.225 | INFO     | __main__:query_sorting:131 - ('8d8107b6-1f24-481c-8a21-7d72b13b59b5', 'J.D.', 'Salinger', 1919)
+2025-02-13 22:49:48.226 | INFO     | __main__:query_sorting:131 - ('0cc3c8e4-e0c0-482f-b2f7-af87330de214', 'Ray', 'Bradbury', 1920)
+2025-02-13 22:49:48.226 | INFO     | __main__:query_sorting:131 - ('10f88232-1ae7-4d88-a6a2-dfcebb22a596', 'Harper', 'Lee', 1926)
+2025-02-13 22:49:48.226 | INFO     | __main__:query_sorting:131 - ('a1b2c3d4-5678-90ab-cdef-1234567890ab', 'Alice', 'Hoffman', 1952)
+2025-02-13 22:49:48.227 | INFO     | __main__:query_sorting:131 - ('6b693b96-394a-4a1d-a4e2-792a47d7a568', 'J.K.', 'Rowling', 1965)
+2025-02-13 22:49:48.227 | INFO     | __main__:query_sorting:131 - ('c3d4e5f6-7890-12cd-ef34-5678901234de', 'Rebecca', 'Yarros', 1981)
+2025-02-13 22:49:48.227 | INFO     | __main__:query_sorting:131 - ('b2c3d4e5-6789-01bc-def2-3456789012cd', 'Sarah J', 'Maas', 1986)
+2025-02-13 22:49:48.228 | INFO     | __main__:query_sorting:131 - ('e5f6g7h8-9012-34ef-5678-9012345678gh', 'Emily', 'Henry', 1986)
+2025-02-13 22:49:48.229 | INFO     | __main__:query_sorting:133 - Sorting query executed successfully.
+2025-02-13 22:49:48.232 | INFO     | __main__:query_join:158 - Query: -- use INNER JOIN operation and optionally include LEFT JOIN, RIGHT JOIN, etc.
+
+-- left join authors and books on author_id
+SELECT authors.last_name, books.title, books.year_published, books.goodreads_rating, books.genre
+FROM authors
+INNER JOIN books ON authors.author_id = books.author_id
+2025-02-13 22:49:48.233 | INFO     | __main__:query_join:159 - Result:
+2025-02-13 22:49:48.234 | INFO     | __main__:query_join:161 - ('Lee', 'To Kill a Mockingbird', 1960, 4.26, 'Fiction')
+2025-02-13 22:49:48.235 | INFO     | __main__:query_join:161 - ('Orwell', '1984', 1949, 4.19, 'Dystopian')
+2025-02-13 22:49:48.236 | INFO     | __main__:query_join:161 - ('Fitzgerald', 'The Great Gatsby', 1925, 3.93, 'Classics')
+2025-02-13 22:49:48.237 | INFO     | __main__:query_join:161 - ('Huxley', 'Brave New World', 1932, 3.99, 'Science Fiction')
+2025-02-13 22:49:48.238 | INFO     | __main__:query_join:161 - ('Bradbury', 'Fahrenheit 451', 1953, 3.96, 'Science Fiction')
+2025-02-13 22:49:48.239 | INFO     | __main__:query_join:161 - ('Austen', 'Pride and Prejudice', 1813, 4.29, 'Romance')
+2025-02-13 22:49:48.240 | INFO     | __main__:query_join:161 - ('Rowling', "Harry Potter and the Philosopher's Stone", 1997, 4.47, 'Fantasy')
+2025-02-13 22:49:48.240 | INFO     | __main__:query_join:161 - ('Hoffman', 'Magic Lessons', 2020, 4.22, 'Historical Fiction')
+2025-02-13 22:49:48.241 | INFO     | __main__:query_join:161 - ('Maas', 'Throne of Glass', 2012, 4.18, 'Fantasy')
+2025-02-13 22:49:48.241 | INFO     | __main__:query_join:161 - ('Yarros', 'Fourth Wing', 2023, 4.58, 'Fantasy')
+2025-02-13 22:49:48.242 | INFO     | __main__:query_join:161 - ('Henry', 'Happy Place', 2023, 3.97, 'Womens Fiction')
+2025-02-13 22:49:48.242 | INFO     | __main__:query_join:163 - Join query executed successfully.

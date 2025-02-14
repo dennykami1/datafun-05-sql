@@ -1,7 +1,5 @@
 # Use Python to execute the SQL queries and maybe chart, illustrate, and/or summarize your findings
 
-# Create a Python script that demonstrates the ability to run sql scripts to interact with fields, update records, delete records, and maybe add additional columns.
-
 import sqlite3
 import pathlib
 import pandas as pd
